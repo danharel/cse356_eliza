@@ -28,8 +28,9 @@ app.get('/eliza', function(req, res) {
 app.post('/eliza', function(req, res) {
     var name = req.body.name;
     var dateStr = (new Date()).toString();
-    //res.send("Hello " + name + ", " + dateStr);
     res.render('doctor.html', {name: name, date: dateStr});
+	//res.sendFile(path.join(__dirname, 'static', 'templates', 'doctor.html'));
+
 });
 
 app.post('/eliza/DOCTOR', function(req, res) {

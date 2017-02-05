@@ -3,14 +3,16 @@
 <!--Styling and JS will go here-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="/js/doctor.js"></script>
+<script>
+var name = '{{name}}';
+</script>
 </head>
 <body>
-<p id="input">
-    <input id="input_text" type="text" name="input" placeholder="Enter a message here" />
-    <input id="input_submit" type="submit" value="Submit"/>
-</p>
-<p id="output">
-    <p class="message">Eliza: Hello {{name}}, {{date}}</p>
-</p>
+<div id="input">
+    <input id="input_text" type="text" name="input" placeholder="Enter a message here">
+    <input id="input_submit" type="submit" value="Submit">
+	<br>
+</div>
+<div id="output"><div class="message">Eliza: Hello {{name}}, {{date}}</div></div>
 </body>
 </html>
