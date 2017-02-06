@@ -3,6 +3,7 @@
 <!--Styling and JS will go here-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="/js/doctor.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/doctor.css"></script>
 <script>
 var name = '{{name}}';
 </script>
@@ -13,6 +14,6 @@ var name = '{{name}}';
     <input id="input_submit" type="submit" value="Submit">
 	<br>
 </div>
-<div id="output"><div class="message">Eliza: Hello {{name}}, {{date}}</div></div>
+<div id="output"><div class="message eliza"><span class="user_name">Eliza: </span>Hello {{name}}, {{date}}</div></div>
 </body>
 </html>

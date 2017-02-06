@@ -1,0 +1,11 @@
+.user_name {
+	font-weight: bold;
+}
+
+.message {
+	line-height: 20px;
+}
+
+#input {
+	padding-bottom: 10px;
+}
