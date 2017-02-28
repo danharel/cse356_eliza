@@ -239,32 +239,6 @@ app.get('/verify', function(req, res) {
 				});
 		});
 	}
-
-	/*
-    MongoClient.connect(url, function(err, db) {
-		assert.equal(null, err);
-		console.log("Connected to MongoDB server");
-		var users = db.collection('users');
-		// Neither of these 2 queries seem to work :) :) :) :) :) :) :) :) 
-//		users.findOne({email: email}, function(err, document) {
-		users.find({email: email}).limit(1).next(function(err, document) {
-			if (err == null) {
-				console.log(err);
-			}
-			if (document) {
-				console.log("ID: " + document._id);
-				if (key == document.key || key == BACKDOOR) {
-					console.log("Valid key obtained");
-					users.update({_id: document._id}, {$set: {verified: true}}, function(err, doc) {
-						console.log("Successfully verified user");
-						res.sendStatus(200);
-					});
-				}
-			}
-		});
-	});
-	*/
-	
 });
 
 app.listen(80, function() {
