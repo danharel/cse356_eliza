@@ -1,0 +1,19 @@
+<html>
+<head>
+<!--Styling and JS will go here-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/doctor.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/doctor.css"></script>
+<script>
+var name = '{{name}}';
+</script>
+</head>
+<body>
+<div id="input">
+    <input id="input_text" type="text" name="input" placeholder="Enter a message here">
+    <input id="input_submit" type="submit" value="Submit">
+	<br>
+</div>
+<div id="output"><div class="message eliza"><span class="user_name">Eliza: </span>Hello {{name}}, {{date}}</div></div>
+</body>
+</html>
