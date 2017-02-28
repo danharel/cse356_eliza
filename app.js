@@ -126,13 +126,45 @@ app.post('/adduser', function(req, res) {
 });
 
 app.get('/verify', function(req, res) {
-    var email = req.body.email;
-    var key = req.body.key;
+    var email = req.query.email;
+    var key = req.query.key;
 
 	if (key == BACKDOOR) {
-		res.sendStatus(200);
+		console.log("backdoor received");
+		MongoClient.connect(url, function(err, db) {
+			assert.equal(null, err);
+			console.log("Connected to MongoDB server");
+			var users = db.collection('users');
+			users.findOneAndUpdate(
+				{email:email},
+				{$set: {verified: true}},
+				{},
+				function(err, response) {
+					console.log(response);
+					if (response.lastErrorObject.updatedExisting)
+						res.sendStatus(200);
+					else res.sendStatus(403);
+				});
+		});
+	}
+	else {
+		MongoClient.connect(url, function(err, db) {
+			assert.equal(null, err);
+			console.log("Connected to MongoDB server");
+			var users = db.collection('users');
+			users.findOneAndUpdate(
+				{email:email, key:key},
+				{$set: {verified: true}},
+				{},
+				function(err, response) {
+					console.log(response);
+					if (response.lastErrorObject.updatedExisting)
+						res.sendStatus(200);
+				});
+		});
 	}
 
+	/*
     MongoClient.connect(url, function(err, db) {
 		assert.equal(null, err);
 		console.log("Connected to MongoDB server");
@@ -155,6 +187,7 @@ app.get('/verify', function(req, res) {
 			}
 		});
 	});
+	*/
 	
 });
 
