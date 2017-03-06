@@ -123,11 +123,19 @@ app.post('/', function(req, res) {
 });
 
 app.post('/DOCTOR', function(req, res) {
-	if (!req.session || !req.session.username) {
+	if (!req.session) {
 		res.send({
 			status: "ERROR",
 			message: "No valid session. Please login.",
 		});
+		return;
+	}
+	if (!req.session.username) {
+		res.send({
+		status: "ERROR",
+		message: "No valid username cookie. Please login",
+		});
+		return;
 	}
 
 	if (!req.session.id) {
@@ -135,6 +143,7 @@ app.post('/DOCTOR', function(req, res) {
 			status: "ERROR",
 			message: "No valid conversation id. Please try again.",
 		});
+		return;
 	}
 	console.log(req.session.id);
 		
@@ -290,8 +299,7 @@ app.post('/adduser', function(req, res) {
 app.post('/verify', function(req, res) {
     var email = req.body.email;
     var key = req.body.key;
-    console.log(email);
-    console.log(key);
+    console.log("Attempting to verify email: " + email);
 
 	// If the backdoor was passed in, then automatically verify the user
 	if (key == BACKDOOR) {
@@ -353,6 +361,9 @@ app.post('/verify', function(req, res) {
 app.post('/login', function(req, res) {
 	var username = req.body.username;
 	var password = req.body.password;
+	console.log(JSON.stringify(req.body));
+	console.log(req.body);
+	console.log("Attempting to login user: " + username);
 	MongoClient.connect(url, function(err, db) {
 		if (err) {
 			res.send({

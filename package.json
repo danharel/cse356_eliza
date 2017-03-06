@@ -15,6 +15,7 @@
     "mustache-express": "~1.2.4",
     "nodemailer": "~3.1.4",
     "path": "~0.12.7",
-    "randomstring": "^1.1.5"
+    "randomstring": "^1.1.5",
+    "client-sessions": "~0.7.0"
   }
 }

@@ -10,7 +10,10 @@
 		$.post('/login', {username: username, password: password},
 			function(data) {
 				console.log(data);
-				window.location.href = '/';
+				if (data.status == 'OK')
+				    window.location.href = '/';
+				else
+					console.log(data.message);
 			}
 		)
 		.fail(function(err) {
