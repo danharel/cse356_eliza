@@ -1,0 +1,30 @@
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+	function login() {
+		console.log("Memes");
+		var username = $('#username').val();
+		var password = $('#password').val();
+
+		$.post('/login', {username: username, password: password},
+			function(data) {
+				console.log(data);
+				window.location.href = '/';
+			}
+		)
+		.fail(function(err) {
+			console.log(err);
+		});
+
+	}
+</script>
+</head>
+<body>
+		<h1>Login</h1>
+		<input id="username" type="text" name="username" placeholder="username"><br>
+		<input id="password" type="password" name="password"><br>
+		<button onclick="login()">Submit</button><br><br>
+		<a href="/html/register.html">Create new account</a>
+</body>
+</html>

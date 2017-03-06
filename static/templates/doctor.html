@@ -6,9 +6,23 @@
 <link rel="stylesheet" type="text/css" href="/css/doctor.css"></script>
 <script>
 var name = '{{name}}';
+
+function logout() {
+	$.post('/logout', function(data) {
+		if (data.status == "SUCCESS") {
+			window.location.href = '/';
+		} else {
+			alert(data.message);
+		}
+	})
+	.fail(function() {
+		alert("Unable to contact server. Please try again later or contact your system administrator");
+	});
+}
 </script>
 </head>
 <body>
+<button onclick="logout()">log out</button>
 <div id="input">
     <input id="input_text" type="text" name="input" placeholder="Enter a message here">
     <input id="input_submit" type="submit" value="Submit">

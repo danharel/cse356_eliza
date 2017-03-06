@@ -10,7 +10,7 @@ $(document).ready(function() {
 		var input = $('#input_text').val();
 		$('#input_text').val('');
 		addMessage(name, input, false);
-		$.post('/eliza/DOCTOR', {
+		$.post('/DOCTOR', {
 			human: input
 		})
 		.done(function(data) {

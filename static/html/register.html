@@ -1,0 +1,17 @@
+<html>
+<head>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+	<form action="/adduser" method="post">
+		<h1>Create Account</h1>
+		<input type="text" name="username" placeholder="Username"><br>
+		<input type="password" name="password"><br>
+		<input type="text" name="email" placeholder="Email"><br	>
+		<!--<div class="g-recaptcha" data-sitekey="6Le_PBcUAAAAALxaNYrSPPPpLO-mTamjjYXPVvre"></div>-->
+		<input type="submit" src="/html/verify.html" value="Submit"><br><br>
+
+		<a href="/html/login.html">Already have an account?</a>
+	</form>
+</body>
+</html>
